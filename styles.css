@@ -1,0 +1,1404 @@
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #f3f5f7;
+    color: #20242a;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ============================================================
+   AUTH BAR
+============================================================ */
+
+.auth-bar {
+    width: 100%;
+    min-height: 58px;
+    background: #20242a;
+    color: #fff;
+    padding: 10px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.auth-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.auth-user span {
+    color: #dce1e6;
+    font-size: 14px;
+}
+
+.auth-user button {
+    border: 0;
+    background: #fff;
+    color: #20242a;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+.login {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff,
+            #eef1f4
+        );
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+
+    background: #fff;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.10);
+
+    border: 1px solid #e5e8eb;
+}
+
+.login-card h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.login-card p {
+    text-align: center;
+    color: #727b85;
+    margin-bottom: 25px;
+}
+
+.login-card input {
+    width: 100%;
+    height: 45px;
+
+    border: 1px solid #d5dbe1;
+    border-radius: 9px;
+
+    padding: 0 13px;
+
+    margin-bottom: 10px;
+
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: #4b67d1;
+
+    box-shadow:
+        0 0 0 3px rgba(75,103,209,.12);
+}
+
+.login-buttons {
+    display: grid;
+    gap: 9px;
+    margin-top: 7px;
+}
+
+.login-buttons button {
+    height: 44px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #20242a;
+    color: #fff;
+
+    font-weight: 700;
+}
+
+.login-buttons button.secondary {
+    background: #edf0f3;
+    color: #333a42;
+}
+
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+.container {
+    width: min(1180px, 94%);
+    margin: 0 auto;
+    padding: 28px 0 50px;
+}
+
+
+/* ============================================================
+   TOPO
+============================================================ */
+
+.topo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+.topo h1 {
+    font-size: 31px;
+    color: #20242a;
+}
+
+.topo p {
+    margin-top: 5px;
+    color: #727b85;
+}
+
+.topo-controles {
+    display: flex;
+    gap: 12px;
+}
+
+.campo {
+    min-width: 170px;
+}
+
+.campo label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: #59616a;
+}
+
+.campo input {
+    width: 100%;
+    height: 42px;
+
+    border: 1px solid #d2d8de;
+    border-radius: 9px;
+
+    padding: 0 11px;
+
+    background: #fff;
+}
+
+
+/* ============================================================
+   TÍTULOS
+============================================================ */
+
+.section-heading {
+    margin-bottom: 16px;
+}
+
+.section-kicker {
+    display: block;
+
+    color: #77818c;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 3px;
+}
+
+.section-heading h2 {
+    font-size: 20px;
+    color: #252a30;
+}
+
+
+/* ============================================================
+   DASHBOARD
+============================================================ */
+
+.dashboard-section {
+    margin-bottom: 20px;
+}
+
+.cardsResumo {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.cardResumo {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+    border-radius: 13px;
+
+    padding: 17px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.035);
+}
+
+.cardResumo h3 {
+    color: #707983;
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+.cardResumo span {
+    display: block;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: #20242a;
+}
+
+.entrada-card {
+    border-top: 3px solid #29985e;
+}
+
+.pendente-card {
+    border-top: 3px solid #e09b25;
+}
+
+.saldo-card {
+    border-top: 3px solid #4b67d1;
+}
+
+.dashboard-insights {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+.insight-card {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+    border-radius: 12px;
+
+    padding: 13px 15px;
+}
+
+.insight-card span {
+    display: block;
+
+    color: #747d86;
+
+    font-size: 11px;
+
+    margin-bottom: 4px;
+}
+
+.insight-card strong {
+    font-size: 16px;
+}
+
+
+/* ============================================================
+   COLUNAS
+============================================================ */
+
+.conteudo {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.coluna {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.035);
+}
+
+.coluna > .section-heading h2 {
+    font-size: 19px;
+}
+
+
+/* ============================================================
+   FORMULÁRIOS
+============================================================ */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+
+    min-height: 42px;
+
+    border: 1px solid #d3d9df;
+
+    border-radius: 8px;
+
+    padding: 0 11px;
+
+    background: #fff;
+
+    outline: none;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    border-color: #4b67d1;
+
+    box-shadow:
+        0 0 0 3px rgba(75,103,209,.10);
+}
+
+.form-row button {
+    min-height: 42px;
+
+    border: 0;
+    border-radius: 8px;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   BOTÕES
+============================================================ */
+
+.btn-primary {
+    background: #20242a;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #101318;
+}
+
+.btn-secondary {
+    background: #e9edf1;
+    color: #30363d;
+
+    border: 0;
+
+    padding: 10px 15px;
+    border-radius: 8px;
+
+    font-weight: 700;
+}
+
+.btn-danger {
+    background: #c83c3c;
+    color: #fff;
+
+    border: 0;
+
+    padding: 10px 16px;
+    border-radius: 8px;
+
+    font-weight: 700;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* ============================================================
+   LISTAS
+============================================================ */
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+.item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    border: 1px solid #e3e7eb;
+
+    border-radius: 10px;
+
+    background: #fafbfc;
+}
+
+.item.pago {
+    background: #f0faf4;
+
+    border-color: #cde8d8;
+}
+
+.info {
+    min-width: 0;
+    flex: 1;
+}
+
+.titulo {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+.item.pago .titulo {
+    text-decoration: line-through;
+    color: #78827c;
+}
+
+.valor {
+    display: block;
+
+    margin-top: 3px;
+
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.pendingMeta {
+    display: block;
+
+    color: #707983;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+.acoes {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.acoes button {
+    border: 1px solid #d5dbe1;
+
+    background: #fff;
+
+    color: #3b4249;
+
+    padding: 7px 9px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.btnPago {
+    background: #e4f6eb !important;
+    border-color: #bfe2cc !important;
+    color: #217548 !important;
+}
+
+.btnPendente {
+    background: #fff2d9 !important;
+    border-color: #efd39b !important;
+    color: #956000 !important;
+}
+
+
+/* ============================================================
+   TOTAIS
+============================================================ */
+
+.total {
+    margin-top: 14px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #e8ebee;
+
+    color: #68717a;
+
+    font-size: 13px;
+}
+
+.total strong {
+    color: #20242a;
+}
+
+
+/* ============================================================
+   FATURA
+============================================================ */
+
+.conferenciaFatura {
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e4e8eb;
+}
+
+.conferenciaFatura h2 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.explicacaoFatura {
+    color: #707983;
+    font-size: 12px;
+
+    margin-bottom: 13px;
+}
+
+.campoFatura label {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.campoFatura input {
+    width: 100%;
+
+    min-height: 42px;
+
+    border: 1px solid #d3d9df;
+
+    border-radius: 8px;
+
+    padding: 0 11px;
+}
+
+.adicionarDevedor {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .7fr auto;
+
+    gap: 7px;
+
+    margin-top: 10px;
+}
+
+.adicionarDevedor input {
+    min-height: 40px;
+
+    border: 1px solid #d3d9df;
+
+    border-radius: 8px;
+
+    padding: 0 10px;
+}
+
+.adicionarDevedor button {
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #20242a;
+    color: #fff;
+
+    padding: 0 12px;
+
+    font-weight: 700;
+}
+
+.devedorItem {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border: 1px solid #e3e7eb;
+
+    border-radius: 9px;
+
+    background: #fafbfc;
+}
+
+.devedorInfo strong {
+    display: block;
+    font-size: 13px;
+}
+
+.devedorInfo span {
+    display: block;
+
+    color: #59636d;
+
+    font-size: 13px;
+
+    margin-top: 2px;
+}
+
+.devedorAcoes {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.devedorAcoes button {
+    border: 1px solid #d5dbe1;
+
+    background: #fff;
+
+    border-radius: 7px;
+
+    padding: 6px 8px;
+
+    font-size: 11px;
+}
+
+.resumoFatura {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.resumoFatura > div {
+    background: #f4f6f8;
+
+    border-radius: 9px;
+
+    padding: 10px;
+}
+
+.resumoFatura span {
+    display: block;
+
+    color: #737c85;
+
+    font-size: 10px;
+}
+
+.resumoFatura strong {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 13px;
+}
+
+.statusFatura {
+    margin-top: 10px;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+}
+
+.statusFatura.neutro {
+    background: #f1f3f5;
+    color: #68717a;
+}
+
+.statusFatura.sucesso {
+    background: #e9f8ef;
+    color: #1c7446;
+}
+
+.statusFatura.aviso {
+    background: #fff7e5;
+    color: #8b6300;
+}
+
+.statusFatura.erro {
+    background: #fff0f0;
+    color: #b12e2e;
+}
+
+
+/* ============================================================
+   PROGRESSO
+============================================================ */
+
+.progressoContainer {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    margin-top: 18px;
+}
+
+.progressoTitulo {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.barraProgresso {
+    width: 100%;
+    height: 12px;
+
+    background: #e7eaed;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    margin-top: 10px;
+}
+
+#barraUso {
+    width: 0;
+
+    height: 100%;
+
+    background: #29985e;
+
+    border-radius: inherit;
+
+    transition: .3s;
+}
+
+.progressoTexto {
+    color: #747d86;
+
+    font-size: 11px;
+
+    margin-top: 7px;
+}
+
+
+/* ============================================================
+   PAINÉIS EXTRAS
+============================================================ */
+
+.feature-panel {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-top: 18px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.035);
+}
+
+
+/* ============================================================
+   2. PENDENTES
+============================================================ */
+
+.pending-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pendingItem {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e1e5e9;
+
+    background: #fafbfc;
+}
+
+.pendingItem.overdue {
+    background: #fff0f0;
+    border-color: #efbaba;
+}
+
+.pendingItem.today {
+    background: #fff7e4;
+    border-color: #efd59d;
+}
+
+.pendingItem.soon {
+    background: #fffdf3;
+    border-color: #eee0b4;
+}
+
+.pendingItem strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.pendingItem span {
+    display: block;
+
+    color: #6f7881;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+.pending-value {
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.pending-total {
+    margin-top: 12px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #e5e8eb;
+
+    color: #68717a;
+
+    font-size: 13px;
+}
+
+.pending-total strong {
+    color: #20242a;
+}
+
+
+/* ============================================================
+   3. VENCIMENTOS
+============================================================ */
+
+.vencimentos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.vencimento-item {
+    display: grid;
+
+    grid-template-columns:
+        1fr auto auto;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 11px 12px;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 9px;
+
+    background: #fafbfc;
+}
+
+.vencimento-item.overdue {
+    border-left: 4px solid #cf4141;
+}
+
+.vencimento-item.today {
+    border-left: 4px solid #e1a328;
+}
+
+.vencimento-item.soon {
+    border-left: 4px solid #d6b438;
+}
+
+.vencimento-desc {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.vencimento-data {
+    font-size: 11px;
+    color: #68717a;
+}
+
+.vencimento-status {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   5. COMPARAÇÃO
+============================================================ */
+
+.comparison-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.compare-card {
+    background: #f7f9fa;
+
+    border: 1px solid #e1e5e9;
+
+    border-radius: 11px;
+
+    padding: 15px;
+}
+
+.compare-card span {
+    display: block;
+
+    color: #737c85;
+
+    font-size: 11px;
+}
+
+.compare-card strong {
+    display: block;
+
+    font-size: 19px;
+
+    margin-top: 4px;
+}
+
+.compare-card small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+}
+
+.compare-up {
+    color: #b43838;
+}
+
+.compare-down {
+    color: #208050;
+}
+
+.compare-neutral {
+    color: #737c85;
+}
+
+
+/* ============================================================
+   SOMA FINAL
+============================================================ */
+
+.soma-final {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.total-soma,
+.final-saldo {
+    background: #fff;
+
+    border: 1px solid #e2e6ea;
+
+    border-radius: 13px;
+
+    padding: 17px;
+
+    color: #707983;
+
+    font-size: 13px;
+}
+
+.total-soma strong,
+.final-saldo strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #20242a;
+
+    font-size: 22px;
+}
+
+.final-saldo {
+    border-top: 3px solid #4b67d1;
+}
+
+
+/* ============================================================
+   GRÁFICO
+============================================================ */
+
+.grafico {
+    background: #20242a;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-top: 18px;
+
+    min-height: 380px;
+}
+
+.grafico h2 {
+    color: #fff;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.grafico canvas {
+    width: 100% !important;
+
+    max-height: 300px;
+}
+
+
+/* ============================================================
+   EXPORTAÇÃO
+============================================================ */
+
+.exportar {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.exportar button {
+    border: 0;
+
+    border-radius: 8px;
+
+    padding: 10px 14px;
+
+    background: #e9edf1;
+
+    color: #30363d;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   10. FECHAMENTO
+============================================================ */
+
+.fechamento-panel {
+    border-top: 3px solid #20242a;
+}
+
+.closed-banner {
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #fff5dc;
+
+    border: 1px solid #efd398;
+
+    color: #805c00;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.fechamentoResumo {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+.fechamentoResumo .summary-box {
+    background: #f5f7f8;
+
+    border: 1px solid #e2e6ea;
+
+    border-radius: 9px;
+
+    padding: 12px;
+}
+
+.summary-box span {
+    display: block;
+
+    color: #737c85;
+
+    font-size: 10px;
+}
+
+.summary-box strong {
+    display: block;
+
+    font-size: 15px;
+
+    margin-top: 3px;
+}
+
+
+/* ============================================================
+   EMPTY
+============================================================ */
+
+.empty {
+    padding: 20px;
+
+    text-align: center;
+
+    border: 1px dashed #d4dae0;
+
+    border-radius: 9px;
+
+    color: #7a838c;
+
+    font-size: 12px;
+
+    background: #fafbfc;
+}
+
+
+/* ============================================================
+   RESPONSIVO
+============================================================ */
+
+@media (max-width: 1000px) {
+
+    .cardsResumo {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .resumoFatura {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .fechamentoResumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 720px) {
+
+    .auth-bar {
+        padding: 10px 15px;
+    }
+
+    .auth-user span {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+        padding-top: 20px;
+    }
+
+    .topo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .topo-controles {
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .cardsResumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .dashboard-insights {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .adicionarDevedor {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .soma-final {
+        grid-template-columns: 1fr;
+    }
+
+    .vencimento-item {
+        grid-template-columns: 1fr;
+    }
+
+    .exportar {
+        flex-direction: column;
+    }
+
+    .exportar button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .topo h1 {
+        font-size: 25px;
+    }
+
+    .topo-controles {
+        grid-template-columns: 1fr;
+    }
+
+    .cardsResumo {
+        grid-template-columns: 1fr;
+    }
+
+    .resumoFatura {
+        grid-template-columns: 1fr;
+    }
+
+    .fechamentoResumo {
+        grid-template-columns: 1fr;
+    }
+
+    .item,
+    .pendingItem,
+    .devedorItem {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .acoes,
+    .devedorAcoes {
+        width: 100%;
+    }
+
+    .acoes button,
+    .devedorAcoes button {
+        flex: 1;
+    }
+
+}

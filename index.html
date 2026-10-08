@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Controle Mensal</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     BARRA DO USUÁRIO
+========================================================= -->
+
+<div
+    id="authBar"
+    class="auth-bar"
+    style="display:none"
+>
+
+    <strong>
+        Controle Mensal
+    </strong>
+
+    <div class="auth-user">
+
+        <span id="userEmail"></span>
+
+        <button onclick="logout()">
+            Sair
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div
+    class="login"
+    id="loginBox"
+>
+
+    <div class="login-card">
+
+        <h1>
+            Controle Mensal
+        </h1>
+
+        <p>
+            Aqui você controla suas finanças.
+        </p>
+
+        <input
+            id="email"
+            type="email"
+            placeholder="E-mail"
+        >
+
+        <input
+            id="senha"
+            type="password"
+            placeholder="Senha"
+        >
+
+        <div class="login-buttons">
+
+            <button onclick="login()">
+                Entrar
+            </button>
+
+            <button
+                class="secondary"
+                onclick="criarConta()"
+            >
+                Criar conta
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CONTEÚDO
+========================================================= -->
+
+<div
+    id="appContent"
+    style="display:none"
+>
+
+    <main class="container">
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================= -->
+
+        <section class="topo">
+
+            <div>
+
+                <h1>
+                    Controle Mensal
+                </h1>
+
+                <p>
+                    Organize suas entradas, despesas e cartão.
+                </p>
+
+            </div>
+
+
+            <div class="topo-controles">
+
+                <div class="campo">
+
+                    <label for="mes">
+                        Mês
+                    </label>
+
+                    <input
+                        type="month"
+                        id="mes"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="entrada">
+                        Valor de Entrada
+                    </label>
+
+                    <input
+                        type="number"
+                        id="entrada"
+                        min="0"
+                        step="0.01"
+                        placeholder="0,00"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             1. DASHBOARD DO MÊS
+        ================================================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        VISÃO GERAL
+                    </span>
+
+                    <h2>
+                        Dashboard do mês
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="cardsResumo">
+
+                <div class="cardResumo entrada-card">
+
+                    <h3>
+                        💰 Entrada
+                    </h3>
+
+                    <span id="cardEntrada">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+
+                <div class="cardResumo">
+
+                    <h3>
+                        💳 Cartão
+                    </h3>
+
+                    <span id="cardCredito">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+
+                <div class="cardResumo">
+
+                    <h3>
+                        🧾 Outros
+                    </h3>
+
+                    <span id="cardDemais">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+
+                <div class="cardResumo">
+
+                    <h3>
+                        🟢 Pago
+                    </h3>
+
+                    <span id="cardPago">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+
+                <div class="cardResumo pendente-card">
+
+                    <h3>
+                        🟠 Pendente
+                    </h3>
+
+                    <span id="cardPendente">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+
+                <div class="cardResumo saldo-card">
+
+                    <h3>
+                        💵 Saldo
+                    </h3>
+
+                    <span id="cardSaldo">
+                        R$ 0,00
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-insights">
+
+                <div class="insight-card">
+
+                    <span>
+                        Percentual da entrada comprometido
+                    </span>
+
+                    <strong id="percentualDashboard">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <span>
+                        Contas pendentes
+                    </span>
+
+                    <strong id="quantidadePendentes">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <span>
+                        Próximo vencimento
+                    </span>
+
+                    <strong id="proximoVencimento">
+                        Nenhum
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CARTÃO + OUTROS GASTOS
+        ================================================= -->
+
+        <div class="conteudo">
+
+
+            <!-- =================================================
+                 6. CARTÃO
+            ================================================= -->
+
+            <section class="coluna">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        CARTÃO
+                    </span>
+
+                    <h2>
+                        Cartão de crédito
+                    </h2>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <input
+                        id="ccDesc"
+                        placeholder="Descrição da compra"
+                    >
+
+                    <input
+                        id="ccValor"
+                        type="number"
+                        placeholder="Valor"
+                        min="0"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <select id="ccParcela">
+
+                        <option value="1">
+                            À vista
+                        </option>
+
+                        <option value="2">
+                            2x
+                        </option>
+
+                        <option value="3">
+                            3x
+                        </option>
+
+                        <option value="4">
+                            4x
+                        </option>
+
+                        <option value="5">
+                            5x
+                        </option>
+
+                        <option value="6">
+                            6x
+                        </option>
+
+                        <option value="7">
+                            7x
+                        </option>
+
+                        <option value="8">
+                            8x
+                        </option>
+
+                        <option value="9">
+                            9x
+                        </option>
+
+                        <option value="10">
+                            10x
+                        </option>
+
+                        <option value="11">
+                            11x
+                        </option>
+
+                        <option value="12">
+                            12x
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        id="ccVencimento"
+                        type="date"
+                        title="Vencimento"
+                    >
+
+
+                    <button
+                        class="btn-primary"
+                        onclick="addCredito()"
+                    >
+                        + Adicionar
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="listaCredito"
+                    class="lista"
+                ></div>
+
+
+                <div class="total">
+
+                    Total cartão:
+
+                    <strong id="totalCredito">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <!-- =============================================
+                     CONTROLE DA FATURA
+                ============================================== -->
+
+                <div class="conferenciaFatura">
+
+                    <h2>
+                        💳 Controle da fatura
+                    </h2>
+
+                    <p class="explicacaoFatura">
+
+                        Informe o valor da fatura e cadastre
+                        as pessoas que fizeram compras no seu cartão.
+
+                    </p>
+
+
+                    <div class="campoFatura">
+
+                        <label for="faturaCartao">
+                            Valor da fatura
+                        </label>
+
+                        <input
+                            id="faturaCartao"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Ex.: 2300"
+                        >
+
+                    </div>
+
+
+                    <div class="adicionarDevedor">
+
+                        <input
+                            id="devedorNome"
+                            type="text"
+                            placeholder="Nome da pessoa"
+                        >
+
+                        <input
+                            id="devedorValor"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Valor"
+                        >
+
+                        <button
+                            onclick="addDevedorCartao()"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="listaDevedoresCartao"
+                        class="lista"
+                    ></div>
+
+
+                    <div class="resumoFatura">
+
+                        <div>
+
+                            <span>
+                                Fatura
+                            </span>
+
+                            <strong id="faturaResumo">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Outras pessoas devem
+                            </span>
+
+                            <strong id="totalDevedores">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Minha parte
+                            </span>
+
+                            <strong id="parteUsuario">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Valor conferido
+                            </span>
+
+                            <strong id="conferidoFatura">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="statusFatura"
+                        class="statusFatura neutro"
+                    >
+                        Informe o valor da fatura para fazer a conferência.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 OUTROS GASTOS
+            ================================================= -->
+
+            <section class="coluna">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        DESPESAS
+                    </span>
+
+                    <h2>
+                        Outros gastos
+                    </h2>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <input
+                        id="dDesc"
+                        placeholder="Descrição"
+                    >
+
+                    <input
+                        id="dValor"
+                        type="number"
+                        placeholder="Valor"
+                        min="0"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <select id="dParcela">
+
+                        <option value="1">
+                            À vista
+                        </option>
+
+                        <option value="2">
+                            2x
+                        </option>
+
+                        <option value="3">
+                            3x
+                        </option>
+
+                        <option value="4">
+                            4x
+                        </option>
+
+                        <option value="5">
+                            5x
+                        </option>
+
+                        <option value="6">
+                            6x
+                        </option>
+
+                        <option value="7">
+                            7x
+                        </option>
+
+                        <option value="8">
+                            8x
+                        </option>
+
+                        <option value="9">
+                            9x
+                        </option>
+
+                        <option value="10">
+                            10x
+                        </option>
+
+                        <option value="11">
+                            11x
+                        </option>
+
+                        <option value="12">
+                            12x
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        id="dVencimento"
+                        type="date"
+                        title="Vencimento"
+                    >
+
+
+                    <button
+                        class="btn-primary"
+                        onclick="addDemais()"
+                    >
+                        + Adicionar
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="listaDemais"
+                    class="lista"
+                ></div>
+
+
+                <div class="total">
+
+                    Total de outros:
+
+                    <strong id="totalDemais">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =================================================
+             PROGRESSO
+        ================================================= -->
+
+        <section class="progressoContainer">
+
+            <div class="progressoTitulo">
+
+                <span>
+                    Orçamento utilizado
+                </span>
+
+                <strong id="percentualUso">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="barraProgresso">
+
+                <div id="barraUso"></div>
+
+            </div>
+
+
+            <div
+                class="progressoTexto"
+                id="textoProgresso"
+            >
+                R$ 0,00 de R$ 0,00
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             2. CONTAS PENDENTES
+        ================================================= -->
+
+        <section class="feature-panel">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    ACOMPANHAMENTO
+                </span>
+
+                <h2>
+                    Resumo de contas pendentes
+                </h2>
+
+            </div>
+
+
+            <div
+                id="listaPendentes"
+                class="pending-list"
+            ></div>
+
+
+            <div class="pending-total">
+
+                Total pendente:
+
+                <strong id="pendingTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             3. VENCIMENTOS
+        ================================================= -->
+
+        <section class="feature-panel">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    CALENDÁRIO FINANCEIRO
+                </span>
+
+                <h2>
+                    Vencimento das despesas
+                </h2>
+
+            </div>
+
+
+            <div
+                id="listaVencimentos"
+                class="vencimentos-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             5. COMPARAÇÃO
+        ================================================= -->
+
+        <section class="feature-panel">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    ANÁLISE
+                </span>
+
+                <h2>
+                    Comparação entre meses
+                </h2>
+
+            </div>
+
+
+            <div
+                id="comparacaoMeses"
+                class="comparison-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             SOMA FINAL
+        ================================================= -->
+
+        <section class="soma-final">
+
+            <div class="total-soma">
+
+                Soma total:
+
+                <strong id="totalDespesas">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <div class="final-saldo">
+
+                Saldo final:
+
+                <strong id="saldoFinal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GRÁFICO
+        ================================================= -->
+
+        <section class="grafico">
+
+            <h2>
+                Distribuição das despesas
+            </h2>
+
+            <canvas
+                id="graficoMensal"
+            ></canvas>
+
+        </section>
+
+
+        <!-- =================================================
+             EXPORTAÇÃO
+        ================================================= -->
+
+        <section class="exportar">
+
+            <button onclick="exportarTXT()">
+                📄 Exportar TXT
+            </button>
+
+            <button onclick="exportarCSV()">
+                📊 Exportar CSV
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             10. FECHAMENTO DO MÊS
+        ================================================= -->
+
+        <section class="feature-panel fechamento-panel">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    FINALIZAÇÃO
+                </span>
+
+                <h2>
+                    Fechamento do mês
+                </h2>
+
+            </div>
+
+
+            <div
+                id="closedBanner"
+                class="closed-banner"
+            >
+                🔒 Este mês está fechado.
+                Os lançamentos não podem mais ser alterados.
+            </div>
+
+
+            <div
+                id="fechamentoResumo"
+                class="fechamentoResumo"
+            ></div>
+
+
+            <div class="button-row">
+
+                <button
+                    id="btnFecharMes"
+                    class="btn-danger"
+                    onclick="fecharMes()"
+                >
+                    🔒 Fechar mês
+                </button>
+
+
+                <button
+                    id="btnReabrirMes"
+                    class="btn-secondary"
+                    onclick="reabrirMes()"
+                >
+                    🔓 Reabrir mês
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     FIREBASE
+========================================================= -->
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+
+<script src="scripts.js"></script>
+
+</body>
+
+</html>
